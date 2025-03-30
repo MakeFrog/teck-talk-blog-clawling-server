@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es5",
+    "outDir": ".build",
+    "moduleResolution": "node",
+    "lib": ["es2015", "esnext", "dom"],
+    "preserveConstEnums": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules/**/*", ".build/", ".serverless/", "node_modules/"]
+}

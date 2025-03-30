@@ -1,0 +1,55 @@
+# service: blog-crawling-server
+
+# provider:
+#   name: aws
+#   stage: ${env:STAGE}
+#   runtime: nodejs20.x
+#   region: ap-northeast-2
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - "s3:*"
+#         - "sqs:*"
+#         - "ssm:GetParameter"
+#         - "ssm:GetParameters"
+#         - "ssm:GetParametersByPath"
+#       Resource: "*"
+#   environment:
+#     S3_BUCKET_NAME: ${ssm:/lilys/${env:STAGE}/storage/s3/bucket_name}
+#     S3_WORKSPACE_BUCKET_NAME: ${ssm:/lilys/${env:STAGE}/storage/s3/workspace_bucket_name}
+#     S3_API_BUCKET_NAME: ${ssm:/lilys/${env:STAGE}/storage/s3/api_bucket_name}
+#     STAGE: ${env:STAGE}
+#     BROWSERLESS_API_TOKEN: ${ssm:/lilys/common/api/browserless/token}
+#     DATABASE_URL: ${ssm:/lilys/${env:STAGE}/database/url}
+
+# package:
+#   exclude:
+#     - node_modules/@aws-sdk/**
+#   patterns:
+#     - "*.json"
+
+# plugins:
+#   - serverless-offline
+#   - serverless-plugin-typescript
+
+# custom:
+#   serverless-offline:
+#     noPrependStageInUrl: true
+#     lambdaPort: null
+
+# functions:
+#   downloadHtml:
+#     handler: src/handler.main
+#     memorySize: 2048
+#     timeout: 900
+#     events:
+#       - http:
+#           path: /download-html
+#           method: post
+#       - s3:
+#           bucket: ${self:provider.environment.S3_BUCKET_NAME}
+#           event: s3:ObjectCreated:*
+#           rules:
+#             - prefix: summary_request_html/
+#             - suffix: .json
+#           existing: true

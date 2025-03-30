@@ -1,0 +1,38 @@
+{
+  "name": "crawling-server",
+  "version": "1.0.0",
+  "description": "Cloud Functions 기반 크롤링 서버 - 여러 테크블로그의 게시글을 크롤링해 Firestore에 저장",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "firebase deploy --only functions",
+    "lint": "tslint -p tsconfig.json",
+    "test": "ts-node src/test.ts"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "firebase-admin": "^11.0.1",
+    "firebase-functions": "^4.0.0",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.93",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^17.0.45",
+    "aws-lambda": "^1.0.7",
+    "cross-env": "^7.0.3",
+    "serverless": "^3.35.0",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-offline": "^10.0.2",
+    "serverless-plugin-cloudfront-lambda-edge": "^2.1.0",
+    "serverless-plugin-ifelse": "^1.0.7",
+    "serverless-plugin-typescript": "^2.1.5",
+    "serverless-prune-plugin": "^2.0.1",
+    "ts-loader": "^5.3.1",
+    "ts-node": "^10.9.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^5.2.2"
+  }
+}
